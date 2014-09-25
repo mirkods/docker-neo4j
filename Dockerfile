@@ -21,4 +21,4 @@ workdir /
 EXPOSE 7474
 
 ## entrypoint
-CMD ["/bin/bash", "-c", "/launch.sh"]
+CMD ["nohup", "./launch.sh"]
