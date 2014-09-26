@@ -1,11 +1,17 @@
 FROM dockerfile/java
-MAINTAINER Oskar Hane "oh@oskarhane.com"
+MAINTAINER Mirko Di Serafino "mirko.diserafino@gmail.com"
 
 RUN wget -O - http://debian.neo4j.org/neotechnology.gpg.key | apt-key add - 
 RUN echo 'deb http://debian.neo4j.org/repo stable/' > /etc/apt/sources.list.d/neo4j.list
 RUN apt-get -q update && apt-get install neo4j=2.1.2 -y -q
 
 ADD launch.sh /
+ADD authentication-extension-2.1.2.jar /var/lib/neo4j/plugins/
+ADD neo4j-server.properties /var/lib/neo4j/conf/
+
+ENV $USERNAME INSERT_HERE
+ENV $PASSWORD INSERT_HERE
+
 RUN chmod +x /launch.sh
 
 ## clean sources

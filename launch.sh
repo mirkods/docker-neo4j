@@ -5,6 +5,8 @@ IPADDR=$(ip a s | sed -ne '/127.0.0.1/!{s/^[ \t]*inet[ \t]*\([0-9.]\+\)\/.*$/\1/
 
 sed -i "s|#org.neo4j.server.webserver.address|org.neo4j.server.webserver.address|g" $NEO4J_HOME/conf/neo4j-server.properties
 sed -i -r 's/(\b[0-9]{1,3}\.){3}[0-9]{1,3}\b'/$IPADDR/ $NEO4J_HOME/conf/neo4j-server.properties
+sed -i -r "s/USERNAME"/$USERNAME/ $NEO4J_HOME/conf/neo4j-server.properties
+sed -i -r "s/PASSWORD"/$PASSWORD/ $NEO4J_HOME/conf/neo4j-server.properties
 
 ulimit -n 65536 ; .$NEO4J_HOME/bin/neo4j console
 
