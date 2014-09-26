@@ -9,8 +9,8 @@ ADD launch.sh /
 ADD authentication-extension-2.1.2.jar /var/lib/neo4j/plugins/
 ADD neo4j-server.properties /var/lib/neo4j/conf/
 
-ENV $USERNAME INSERT_HERE
-ENV $PASSWORD INSERT_HERE
+ENV USERNAME {{INSERT_HERE}}
+ENV PASSWORD {{INSERT_HERE}}
 
 RUN chmod +x /launch.sh
 
@@ -21,6 +21,8 @@ RUN apt-get clean
 ## enable neo4j indexing, and set indexable keys to name,age
 RUN sed -i "s|#node_auto_indexing|node_auto_indexing|g" /var/lib/neo4j/conf/neo4j.properties
 RUN sed -i "s|#node_keys_indexable|node_keys_indexable|g" /var/lib/neo4j/conf/neo4j.properties
+RUN sed -i "s|USERNAME|$USERNAME|g" /var/lib/neo4j/conf/neo4j-server.properties
+RUN sed -i "s|PASSWORD|$PASSWORD|g" /var/lib/neo4j/conf/neo4j-server.properties
 
 workdir /
 
