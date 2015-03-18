@@ -6,16 +6,20 @@ Neo4j is a highly scalable, robust (fully ACID) native graph database. Neo4j is 
 With the Dockerfile on repository you've a docker neo4j community edition image ready to go.
 
 ### Setup
+1. Build your Docker image
+	`cd docker-neo4j && docker build -t neo4j .`
 
-1. Execute this command:
+2. Create a data container
+	`docker create -v /data --name neo4j_data ubuntu`
 
+3. Execute this command:
 	`docker run -d -i -p 7474:7474 --volumes-from neo4j_data --name neo4j neo4j`
 
-2. Access to http://localhost:7474 with your browser.
+4. Access to http://localhost:7474 with your browser.
 
 ### Start a stopped docker container
 To retrieve the container id:
 	`docker ps -a`
 
 To start a stopped container:
-	`docker start <containerId>`
+	`docker start|stop <containerId>`
