@@ -7,7 +7,7 @@ With the Dockerfile on repository you've a docker neo4j community edition image 
 
 ### Configuration
 1. Clone the repo `git clone https://github.com/mirkods/docker-neo4j.git`
-2. Substitute in the Dockerfile the {{INSERT_HERE}} tag with your username and password to create secure access on neo4j
+2. Substitute in the Dockerfile the `{{INSERT_HERE}}` tag with your username and password to create secure access on neo4j
 
 ### Setup
 1. Build your Docker image
