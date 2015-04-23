@@ -27,3 +27,21 @@ To retrieve the container id:
 
 To start a stopped container:
 	`docker start|stop <containerId>`
+
+### Data container
+You can also use a data container 
+
+1. Create  data container
+```
+	docker run -d -v /var/lib/neo4j/data --name neo4j_data ubuntu echo Neo4j data
+```
+
+2. Create a neo4j container and attach the data container to itself
+```
+	docker run -d -i -p 7474:7474 --volumes-from neo4j_data --name neo4j neo4j
+```
+
+3.Backup from data contenier
+```
+	docker run --volumes-from neo4j_data -v $(pwd):/backup ubuntu tar cvf /backup/backup.tar /var/lib/neo4j/data/
+```
