@@ -1,4 +1,4 @@
-FROM dockerfile/java
+FROM java:7
 MAINTAINER Mirko Di Serafino "mirko.diserafino@gmail.com"
 
 RUN wget -O - http://debian.neo4j.org/neotechnology.gpg.key | apt-key add - 
